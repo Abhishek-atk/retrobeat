@@ -1,0 +1,88 @@
+<h1>List of All Songs</h1>
+<a href="/admin/dashboard/songs/add-song" class=" mb-4" style="display:block; float:right; margin-right: 80px;">
+    <button class="songAdd-btn">Add song<i class="fa-solid fa-plus"></i></button>
+</a>
+
+<div class="container mt-5 ">
+    <table class="table table-striped table-hover" id="allsongsTable">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Language</th>
+                <th scope="col">Categories</th>
+                <th scope="col">Types</th>
+                <th scope="col">Duration</th>
+                <th scope="col">edit/delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each allSongs}}
+            <tr>
+                <th scope="row" id="slno-1"></th>
+                <td><img class="song-table-img" src="/uploads/songImage/{{songimgName}}" alt="song-img" /> </td>
+                <td>{{songName}}</td>
+                <td>{{artistsName}}</td>
+                <td>{{language}}</td>
+                <td>{{categories}}</td>
+                <td>{{types}}</td>
+                <td>{{duration}}</td>
+                <td class="">
+                    <div class="inline-div"><button><a href="/admin/dashboard/songs/edit-song/{{_id}}"><i class="fa-solid fa-pen-to-square"></i></a></button></div>
+                    <div class="inline-div"><button><a href="/admin/dashboard/songs/delete-song/{{_id}}/{{songimgName}}/{{songfileName}}"><i class="fa-solid fa-trash"></i></a></button></div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .songAdd-btn{
+       border-radius: 8px;
+       padding: 5px;
+        background: transparent;
+    }
+    .inline-div {
+        display: inline-block;
+
+    }
+
+    .inline-div button {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        margin: 15px;
+    }
+    .inline-div a{
+        text-decoration: none;
+        color: black;
+
+    }
+    .inline-div a:hover{
+        color: rgb(31, 30, 30);
+    }
+
+    .song-table-img {
+        width: 60px;
+        height: 60px;
+        filter: brightness(70%) contrast(150%) saturate(0%) brightness(150%);
+    }
+</style>
+
+<script>
+    // Get the table element
+    var tableElement = document.getElementById("allsongsTable");
+
+    // Get all the rows within the table (excluding the header row)
+    var rows = tableElement.getElementsByTagName("tr");
+
+    // Loop through each row (excluding the header row) and update the serial number
+    for (var i = 1; i < rows.length; i++) {
+        var slnoCell = rows[i].cells[0]; // Get the first cell (Sl.No cell) of the current row
+        slnoCell.textContent = i; // Update the Sl.No text content with the updated serial number
+        slnoCell.id = "slno-" + i; // Update the Sl.No cell ID with the updated serial number
+    }
+</script>

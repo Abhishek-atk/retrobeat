@@ -1,0 +1,49 @@
+<div class="fav-song-main">
+    {{#each favSongs}}
+    <div class="mycard mt-4" onclick="getsongDetails('{{_id}}','{{songName}}','{{songimgName}}','{{songfileName}}')">
+        <img src="/uploads/songImage/{{songimgName}}" alt="favSong">
+        <h6 class="mt-2 ">{{songName}}</h6>
+    </div>
+    {{/each}}
+</div>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .fav-song-main {
+        background-color: transparent;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .mycard {
+        margin: 15px;
+        min-width: 150px;
+        height: 150px;
+        aspect-ratio: 1/1;
+        border-radius: 8px;
+        transition: all 0.5s;
+    }
+
+    .mycard img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(70%) contrast(150%) saturate(0%) brightness(150%);
+        border-radius: 8px;
+    }
+    .mycard h6{
+  color: black;
+  text-align: center;
+
+}
+
+    .mycard:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+        transform: translateY(-8px);
+    }
+</style>

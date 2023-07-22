@@ -1,0 +1,232 @@
+<div class="container-fluid">
+    <div class="row col-sm-12">
+        <div class="col-md-12">
+            {{!-- {{#if admin}}
+            <h1>admin</h1>
+            {{else}}
+            <h1>user</h1>
+            {{/if}}
+            {{#each songDatas}}
+            {{songimgName}}
+            <img src="/uploads/songImage/{{songimgName}}" alt="song-img">
+            {{/each}}
+            --}}
+            <div id="favsongid" style="display: none;">{{favsongId}}</div>
+
+            <h4 class="page-title">New</h4>
+            <div class="card" id="slide-container-one">
+                <div id="my-container-one ">
+                    <div id="slider-container-one">
+                        <div id="slider-one">
+                            {{#each newTenSongs}}
+                            <a class="slide-one" id="slide-one"
+                                onclick="getsongDetails('{{_id}}','{{songName}}','{{songimgName}}','{{songfileName}}')">
+                                <img src="/uploads/songImage/{{songimgName}}" alt="song-img" />
+                                <h6 class="mt-2 ">{{songName}}</h6>
+                            </a>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="slide-btn">
+                        <i id="leftBtn-one" class="fa-solid fa-circle-chevron-left slideBtn"></i>
+                        <i id="rightBtn-one" class="fa-solid fa-circle-chevron-right slideBtn ms-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===end first slider -->
+
+
+        <div class="col-md-6">
+            <h4 class="page-title">Top 10</h4>
+            <div class="card card-tasks">
+                {{#each topTenSongs}}
+                <div class="song-list">
+                    <div class="song"
+                        onclick="getsongDetails('{{_id}}','{{songName}}','{{songimgName}}','{{songfileName}}')">
+                        <div class="song-img">
+                            <img src="/uploads/songImage/{{songimgName}}" alt="top-ten-songs" />
+                        </div>
+                        <div class="song-name">{{songName}}</div>
+                        <div class="song-time">{{duration}}</div>
+                        <div class="play-button"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="page-title mt-2">Language</h4>
+            <div class="card mt-3">
+                <div class="mood-card">
+                    <div class="mood-div-main">
+                        <div id="malayalam-btn">Malayalam</div>
+                        <div id="tamil-btn">Tamil</div>
+                        <div id="hindi-btn">Hindi</div>
+                        <div id="english-btn">English</div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="page-title mt-5">Categories</h4>
+            <div class="card mt-3">
+                <div class="mood-card">
+                    <div class="mood-div-main">
+                        <div>Chill Hits</div>
+                        <div>Romantic</div>
+                        <div>Sad</div>
+                        <div>Dance</div>
+                        <div>Sleep</div>
+                        <div>Rap</div>
+                        <div>Hip-Pop</div>
+                        <div>Classical</div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="page-title mt-5">Types</h4>
+            <div class="card mt-3">
+                <div class="mood-card">
+                    <div class="mood-div-main">
+                        <div>Normal</div>
+                        <div>Lo-Fi</div>
+                        <div>BGM</div>
+                        <div>Others</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start second slider -->
+        <div class="col-md-12">
+            <h4 class="page-title">Artists</h4>
+            <div class="card" id="slide-container-two">
+                <div id="my-container-two ">
+                    <div id="slider-container-two">
+                        <div id="slider-two">
+                            <div class="slide-two">
+                                <img src="https://i.scdn.co/image/ab67616d0000b273a0297a9f74f9e43a2f9753be" alt="" />
+                                <!-- <div class="song-detailes">
+                                                  <div class="new-songName">Chirathukal</div>
+                                                  <div class="new-songTime">3:48</div>
+                                              </div> -->
+                            </div>
+                            <div class="slide-two"><img
+                                    src="https://a10.gaanacdn.com/gn_img/song/01A3mrWNQX/A3mAMwnd3N/size_l_1637731261.jpg"
+                                    alt="" /></div>
+                            <div class="slide-two"><img
+                                    src="https://a10.gaanacdn.com/gn_img/albums/4Z9bqo3yQn/Z9bq6vxMKy/size_l.jpg"
+                                    alt="" /></div>
+                            <div class="slide-two"><img
+                                    src="https://a10.gaanacdn.com/images/albums/18/2194918/crop_480x480_1535086575_2194918.jpg"
+                                    alt="" />
+                            </div>
+                            <div class="slide-two"><img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgP2LRzZNtx4DqBAp5FmQ1ChzpNaeGuJ1QYyGmZ2rLi9vnOwO601eZ1wHWUk__4_Su6I&usqp=CAU"
+                                    alt="" /></div>
+                            <div class="slide-two">6</div>
+                            <div class="slide-two">7</div>
+                            <div class="slide-two">8</div>
+                            <div class="slide-two">9</div>
+                            <div class="slide-two">10</div>
+                        </div>
+                    </div>
+                    <div class="slide-btn">
+                        <i id="leftBtn-two" class="fa-solid fa-circle-chevron-left slideBtn"></i>
+                        <i id="rightBtn-two" class="fa-solid fa-circle-chevron-right slideBtn ms-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End second slider -->
+
+        <!-- Start third slider -->
+
+        <div class="col-md-12">
+            <h4 class="page-title">Shows to try</h4>
+            <div class="card" id="slide-container-three">
+                <div id="my-container-three ">
+                    <div id="slider-container-three">
+                        <div id="slider-three">
+                            <div class="slide-three">
+                                <img src="https://i.scdn.co/image/ab67616d0000b273a0297a9f74f9e43a2f9753be" alt="" />
+                                <!-- <div class="song-detailes">
+                                                    <div class="new-songName">Chirathukal</div>
+                                                    <div class="new-songTime">3:48</div>
+                                                </div> -->
+                            </div>
+                            <div class="slide-three"><img
+                                    src="https://a10.gaanacdn.com/gn_img/song/01A3mrWNQX/A3mAMwnd3N/size_l_1637731261.jpg"
+                                    alt="" /></div>
+                            <div class="slide-three"><img
+                                    src="https://a10.gaanacdn.com/gn_img/albums/4Z9bqo3yQn/Z9bq6vxMKy/size_l.jpg"
+                                    alt="" /></div>
+                            <div class="slide-three"><img
+                                    src="https://a10.gaanacdn.com/images/albums/18/2194918/crop_480x480_1535086575_2194918.jpg"
+                                    alt="" />
+                            </div>
+                            <div class="slide-three"><img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgP2LRzZNtx4DqBAp5FmQ1ChzpNaeGuJ1QYyGmZ2rLi9vnOwO601eZ1wHWUk__4_Su6I&usqp=CAU"
+                                    alt="" /></div>
+                            <div class="slide-three">6</div>
+                            <div class="slide-three">7</div>
+                            <div class="slide-three">8</div>
+                            <div class="slide-three">9</div>
+                            <div class="slide-three">10</div>
+                        </div>
+                    </div>
+                    <div class="slide-btn">
+                        <i id="leftBtn-three" class="fa-solid fa-circle-chevron-left slideBtn"></i>
+                        <i id="rightBtn-three" class="fa-solid fa-circle-chevron-right slideBtn ms-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End third slider -->
+        <!-- Start fourth slider-->
+
+        <div class="col-md-12">
+            <h4 class="page-title">Spotify originals & Exclisive Shows</h4>
+            <div class="card" id="slide-container-four">
+                <div id="my-container-four ">
+                    <div id="slider-container-four">
+                        <div id="slider-four">
+                            <div class="slide-four">
+                                <img src="https://i.scdn.co/image/ab67616d0000b273a0297a9f74f9e43a2f9753be" alt="" />
+                                <!-- <div class="song-detailes">
+                                                    <div class="new-songName">Chirathukal</div>
+                                                    <div class="new-songTime">3:48</div>
+                                                </div> -->
+                            </div>
+                            <div class="slide-four"><img
+                                    src="https://a10.gaanacdn.com/gn_img/song/01A3mrWNQX/A3mAMwnd3N/size_l_1637731261.jpg"
+                                    alt="" /></div>
+                            <div class="slide-four"><img
+                                    src="https://a10.gaanacdn.com/gn_img/albums/4Z9bqo3yQn/Z9bq6vxMKy/size_l.jpg"
+                                    alt="" /></div>
+                            <div class="slide-four"><img
+                                    src="https://a10.gaanacdn.com/images/albums/18/2194918/crop_480x480_1535086575_2194918.jpg"
+                                    alt="" />
+                            </div>
+                            <div class="slide-four"><img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgP2LRzZNtx4DqBAp5FmQ1ChzpNaeGuJ1QYyGmZ2rLi9vnOwO601eZ1wHWUk__4_Su6I&usqp=CAU"
+                                    alt="" /></div>
+                            <div class="slide-four">6</div>
+                            <div class="slide-four">7</div>
+                            <div class="slide-four">8</div>
+                            <div class="slide-four">9</div>
+                            <div class="slide-four">10</div>
+                        </div>
+                    </div>
+                    <div class="slide-btn">
+                        <i id="leftBtn-four" class="fa-solid fa-circle-chevron-left slideBtn"></i>
+                        <i id="rightBtn-four" class="fa-solid fa-circle-chevron-right slideBtn ms-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End fourth slider -->
+    </div>
+</div>
+</div>

@@ -1,0 +1,38 @@
+
+<div class="container mt-5 ">
+<table class="table table-striped table-hover" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+    <tr>
+      <th scope="row" id="slno-1"></th>
+      <td>{{username}}</td>
+      <td>{{email}}</td>
+      <td>{{isAdmin}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+<script>
+  // Get the table element
+  var tableElement = document.getElementById("myTable");
+
+  // Get all the rows within the table (excluding the header row)
+  var rows = tableElement.getElementsByTagName("tr");
+
+  // Loop through each row (excluding the header row) and update the serial number
+  for (var i = 1; i < rows.length; i++) {
+    var slnoCell = rows[i].cells[0]; // Get the first cell (Sl.No cell) of the current row
+    slnoCell.textContent = i; // Update the Sl.No text content with the updated serial number
+    slnoCell.id = "slno-" + i; // Update the Sl.No cell ID with the updated serial number
+  }
+</script>

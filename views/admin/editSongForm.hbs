@@ -1,0 +1,99 @@
+<h1>Edit song</h1>
+
+<div class="addsong-main">
+    <div class="addsong-display">
+        <form class="mt-5" action="/admin/edit-song" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <h4>Song Name</h4>
+                <input type="text" class="form-control" name="songname" required value="{{editsongDetails.songName}}" />
+            </div>
+            <div class="mb-3 mt-4">
+                <h4>Artist Name</h4>
+                <input type="text" class="form-control" name="artistname" required
+                    value="{{editsongDetails.artistsName}}" />
+            </div>
+                <div class="mb-3 mt-4">
+                    <h4>Duration</h4>
+                    <input type="text" class="form-control" name="duration" required value="{{editsongDetails.duration}}" />
+                </div>
+
+            <div class="mb-3 mt-4">
+                <h4>Language</h4>
+                <select class="form-select" id="language" name="language" required>
+                    <option value="{{editsongDetails.language}}" selected>{{editsongDetails.language}}</option>
+                    <option value="Malayalam">Malayalam</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="English">English</option>
+                </select>
+            </div>
+            <div class="mb-3 mt-4">
+                <h4>Categories</h4>
+                <select class="form-select" id="categories" name="categories" required>
+                    <option value="{{editsongDetails.categories}}" selected>{{editsongDetails.categories}}</option>
+                    <option value="Chill-Hits">Chill Hits</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="Sad">Sad</option>
+                    <option value="Dance">Dance</option>
+                </select>
+            </div>
+            <div class="mb-3 mt-4">
+                <h4>Types</h4>
+                <select class="form-select" id="Types" name="types" required>
+                    <option value="{{editsongDetails.types}}" selected>{{editsongDetails.types}}</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Lo-Fi">Lo-Fi</option>
+                    <option value="BGM">BGM</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="mb-3 mt-4">
+                <h4>Song image</h4>
+                <small>For security purpose You must need to upload new image file</small>
+                <input type="file" class="form-control" name="songImg" required value="{{editsongDetails.songimgName}}" onchange="newimg(event)"/>
+                <img class="edit-song-img mt-4" src="/uploads/songImage/{{editsongDetails.songimgName}}"
+                    alt="song-img" id="imgview"/>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <h4>Song file</h4>
+                <small>For security purpose You must need to upload new mp3 file</small>
+                <input type="file" class="form-control" name="songFile" required value="{{editsongDetails.songfileName}}"/>
+            </div>
+            <input type="text" name="songId" hidden value="{{editsongDetails._id}}">
+            <input type="text" name="songimgNameCheck" hidden value="{{editsongDetails.songimgName}}">
+            <input type="text" name="songfileNameCheck" hidden value="{{editsongDetails.songfileName}}">
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function newimg(event) {
+        document.getElementById('imgview').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>
+<style>
+    .edit-song-img {
+        border: 1px black solid;
+        border-radius: 8px;
+        margin-left: 165px;
+        width: 100px;
+        height: 100px;
+        filter: brightness(70%) contrast(150%) saturate(0%) brightness(150%);
+    }
+
+    .addsong-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .addsong-display {
+        width: 500px;
+        height: 500px;
+        ;
+        border-radius: 5px;
+    }
+</style>

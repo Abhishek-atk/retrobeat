@@ -1,0 +1,96 @@
+
+function carousel(containerId, sliderId, slideClass, leftbtnId, rightbtnId, buttonClass) {
+    var container = document.querySelector(containerId);
+    var slider = container.querySelector(sliderId);
+    var slides = container.querySelectorAll(slideClass).length;
+    var leftBtn = container.querySelector(leftbtnId);
+    var rightBtn = container.querySelector(rightbtnId);
+    var buttons = container.querySelectorAll(buttonClass)
+    var currentPosition = 0;
+    var currentMargin = 0;
+    var slidesPerPage = 0;
+    var slidesCount = slides - slidesPerPage;
+    var containerWidth = container.offsetWidth;
+    var prevKeyActive = false;
+    var nextKeyActive = true;
+
+    window.addEventListener("resize", checkWidth);
+
+    function checkWidth() {
+        containerWidth = container.offsetWidth;
+        setParams(containerWidth);
+    }
+
+    function setParams(w) {
+        if (w < 551) {
+            slidesPerPage = 1;
+        } else {
+            if (w < 901) {
+                slidesPerPage = 2;
+            } else {
+                if (w < 1101) {
+                    slidesPerPage = 3;
+                } else {
+                    slidesPerPage = 4;
+                }
+            }
+        }
+        slidesCount = slides - slidesPerPage;
+        if (currentPosition > slidesCount) {
+            currentPosition -= slidesPerPage;
+        };
+        currentMargin = - currentPosition * (100 / slidesPerPage);
+        slider.style.marginLeft = currentMargin + '%';
+        if (currentPosition > 0) {
+            buttons[0].classList.remove('inactive');
+        }
+        if (currentPosition < slidesCount) {
+            buttons[1].classList.remove('inactive');
+        }
+        if (currentPosition >= slidesCount) {
+            buttons[1].classList.add('inactive');
+        }
+    }
+
+    setParams();
+
+    leftBtn.addEventListener('click', () => {
+        if (currentPosition != 0) {
+            slider.style.marginLeft = currentMargin + (100 / slidesPerPage) + '%';
+            currentMargin += (100 / slidesPerPage);
+            currentPosition--;
+        };
+        if (currentPosition === 0) {
+            buttons[0].classList.add('inactive');
+        }
+        if (currentPosition < slidesCount) {
+            buttons[1].classList.remove('inactive');
+        }
+
+
+
+    })
+
+
+    rightBtn.addEventListener('click', () => {
+
+        if (currentPosition != slidesCount) {
+            slider.style.marginLeft = currentMargin - (100 / slidesPerPage) + '%';
+            currentMargin -= (100 / slidesPerPage);
+            currentPosition++;
+        };
+        if (currentPosition == slidesCount) {
+            buttons[1].classList.add('inactive');
+        }
+        if (currentPosition > 0) {
+            buttons[0].classList.remove('inactive');
+        }
+    })
+
+
+}
+
+carousel('#slide-container-one', '#slider-one', '.slide-one', '#leftBtn-one', '#rightBtn-one', '.slideBtn')
+carousel('#slide-container-two', '#slider-two', '.slide-two', '#leftBtn-two', '#rightBtn-two', '.slideBtn')
+carousel('#slide-container-three', '#slider-three', '.slide-three', '#leftBtn-three', '#rightBtn-three', '.slideBtn')
+carousel('#slide-container-four', '#slider-four', '.slide-four', '#leftBtn-four', '#rightBtn-four', '.slideBtn')

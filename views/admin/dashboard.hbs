@@ -1,0 +1,33 @@
+<div class="col-md-12">
+  <div class="card mt-3 admin-card">
+    <div class="mood-card">
+      <div class="mood-div-main">
+        <a href="/admin/dashboard/users">
+          <div class="">Users <span >({{userNumber}})</span></div>
+        </a> 
+        <a href="/admin/dashboard/songs">
+          <div>Songs <span>({{songNumber}})</span></div>
+        </a>
+        <a href="/admin/dashboard/albums">
+          <div>Albums</div>
+        </a>
+        <a href="/admin/dashboard/artists">
+          <div>Artists</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .admin-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50px;
+  }
+
+  a {
+    color: black;
+  }
+</style>
