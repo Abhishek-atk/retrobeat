@@ -30,8 +30,18 @@
                 <td>{{types}}</td>
                 <td>{{duration}}</td>
                 <td class="">
-                    <div class="inline-div"><button><a href="/admin/dashboard/songs/edit-song/{{_id}}"><i class="fa-solid fa-pen-to-square"></i></a></button></div>
-                    <div class="inline-div"><button><a href="/admin/dashboard/songs/delete-song/{{_id}}/{{songimgName}}/{{songfileName}}"><i class="fa-solid fa-trash"></i></a></button></div>
+                    <div class="inline-div"><button><a href="/admin/dashboard/songs/edit-song/{{_id}}"><i
+                                    class="fa-solid fa-pen-to-square"></i></a></button></div>
+                    {{!-- <div class="inline-div"><button><a
+                                href="/admin/dashboard/songs/delete-song/{{_id}}/{{songimgName}}/{{songfileName}}"><i
+                                    class="fa-solid fa-trash"></i></a></button></div> --}}
+                    <div class="inline-div">
+                        <button onclick="confirmDelete('{{_id}}', '{{songimgName}}', '{{songfileName}}')">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+
+
                 </td>
             </tr>
             {{/each}}
@@ -40,11 +50,12 @@
 </div>
 
 <style>
-    .songAdd-btn{
-       border-radius: 8px;
-       padding: 5px;
+    .songAdd-btn {
+        border-radius: 8px;
+        padding: 5px;
         background: transparent;
     }
+
     .inline-div {
         display: inline-block;
 
@@ -56,12 +67,14 @@
         cursor: pointer;
         margin: 15px;
     }
-    .inline-div a{
+
+    .inline-div a {
         text-decoration: none;
         color: black;
 
     }
-    .inline-div a:hover{
+
+    .inline-div a:hover {
         color: rgb(31, 30, 30);
     }
 
@@ -85,4 +98,13 @@
         slnoCell.textContent = i; // Update the Sl.No text content with the updated serial number
         slnoCell.id = "slno-" + i; // Update the Sl.No cell ID with the updated serial number
     }
+
+    function confirmDelete(_id, songimgName, songfileName) {
+            var confirmation = window.confirm("Are you sure you want to delete this song?");
+            if (confirmation) {
+                var deleteURL = `/admin/dashboard/songs/delete-song/${_id}/${songimgName}/${songfileName}`;
+                window.location.href = deleteURL;
+            }
+        }
+
 </script>

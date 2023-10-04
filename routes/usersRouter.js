@@ -91,7 +91,7 @@ router.post("/signup", async (req, res) => {
         secure: true,
       });
       res.redirect("/");
-    }
+    } 
   }).catch((error) => {
     res.redirect("/signup");
   })
@@ -123,7 +123,7 @@ router.post("/login", async (req, res) => {
       });
       res.redirect("/");
     } else {
-      res.redirect("/login");
+      res.render("users/login", { error:"eorr"})
     }
   })
 })

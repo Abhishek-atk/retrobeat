@@ -49,7 +49,7 @@
             </div>
             <div class="mb-3 mt-4">
                 <h4>Song image</h4>
-                <small>For security purpose You must need to upload new image file</small>
+                <small>You must need to upload new image file</small>
                 <input type="file" class="form-control" name="songImg" required value="{{editsongDetails.songimgName}}" onchange="newimg(event)"/>
                 <img class="edit-song-img mt-4" src="/uploads/songImage/{{editsongDetails.songimgName}}"
                     alt="song-img" id="imgview"/>
@@ -57,7 +57,7 @@
 
             <div class="mb-3 mt-4">
                 <h4>Song file</h4>
-                <small>For security purpose You must need to upload new mp3 file</small>
+                <small>You must need to upload new mp3 file</small>
                 <input type="file" class="form-control" name="songFile" required value="{{editsongDetails.songfileName}}"/>
             </div>
             <input type="text" name="songId" hidden value="{{editsongDetails._id}}">
