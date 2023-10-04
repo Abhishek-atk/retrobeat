@@ -360,7 +360,7 @@
 
                     <!-- End third slider -->
                     <!-- Start fourth slider-->
-
+<!--
                     <div class="col-md-12">
                         <h4 class="page-title">Spotify originals & Exclisive Shows</h4>
                         <div class="card" id="slide-container-four">
@@ -370,10 +370,6 @@
                                         <div class="slide-four">
                                             <img src="https://i.scdn.co/image/ab67616d0000b273a0297a9f74f9e43a2f9753be"
                                                 alt="" />
-                                            <!-- <div class="song-detailes">
-                                                    <div class="new-songName">Chirathukal</div>
-                                                    <div class="new-songTime">3:48</div>
-                                                </div> -->
                                         </div>
                                         <div class="slide-four"><img
                                                 src="https://a10.gaanacdn.com/gn_img/song/01A3mrWNQX/A3mAMwnd3N/size_l_1637731261.jpg"
@@ -402,6 +398,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
                     <!-- End fourth slider -->
                 </div>
             </div>
@@ -437,7 +434,7 @@
 </div>
 {{!-- Playlist Div --}}
 <div id="overlay-background"></div>
-<div id="add-to-playlist-div">
+<div id="add-to-playlist-div" style="border-radius: 8px;">
 
     <div style="padding: 25px;">
         <div class="playlist_header">
@@ -451,7 +448,7 @@
                     onchange="handleCheckboxChange(this)" id="check-box"/> <span class="playlistName">{{playlistName}}</span>
                 <br />
                 {{/each}}
-                <button type="submit" id="submitButton" disabled>Save</button>
+                <button type="submit" id="submitButton" disabled style="border-radius: 8px;">Save</button>
             </form>
         </div>
         <div class="playlist_createPlaylist">

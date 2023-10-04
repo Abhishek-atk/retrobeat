@@ -68,8 +68,30 @@ router.get("/signup", (req, res) => {
 router.post("/signup", async (req, res) => {
   const body = req.body;
   await userController.doSignup(body).then((response) => {
-    // res.send(response)
-    res.redirect("/")
+    if (response.status) {
+      res.cookie("username", response.user.username, {
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+        httpOnly: true,
+        secure: true,
+      });
+      res.cookie("id", response.user._id, {
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+        httpOnly: true,
+        secure: true,
+      });
+      res.cookie("token", response.token, {
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+        httpOnly: true,
+        secure: true,
+      });
+
+      res.cookie("admin", response.user.isAdmin, {
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+        httpOnly: true,
+        secure: true,
+      });
+      res.redirect("/");
+    }
   }).catch((error) => {
     res.redirect("/signup");
   })

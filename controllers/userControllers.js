@@ -6,6 +6,8 @@ const playlistsDB = playlistSchema
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const ObjectId = require('mongoose').Types.ObjectId
+
 
 
 module.exports = {
@@ -16,8 +18,13 @@ module.exports = {
         reject({ msg: "User Already Exist" });
       } else {
         data.password = await bcrypt.hash(data.password, 10);
-        usersDB.create(data);
-        resolve({ msg: "New User Created" });
+        const user = await usersDB.create(data)
+        const token = jwt.sign(
+          { username: user.username },
+          process.env.JWT_SECRET
+        );
+        console.log(user);
+        resolve({ msg: "New User Created", user: user, status: true, token: token });
       }
     });
   },
@@ -67,15 +74,30 @@ module.exports = {
   },
   getfavoriteSongs: (userId) => {
     return new Promise(async (resolve, reject) => {
-      const getfavSongs = await usersDB.find({ _id: userId }).lean().exec();
-      if (getfavSongs.length === 0) {
-        favSongsId = []
-        resolve(favSongsId, { msg: "success" });
-      } else {
-        const favSongsId = getfavSongs[0].favoriteItems.favoriteSongIds
-        resolve(favSongsId, { msg: "success" });
+      try {
+        let getfavSongs = await usersDB.aggregate([
+          {
+            $match: {
+              _id: new ObjectId(userId)
+            }
+          },
+          {
+            $project: {
+              _id: null,
+              favoriteItems: "$favoriteItems"
+            }
+          }
+        ]);
+        if (getfavSongs.length === 0 || !getfavSongs[0].favoriteItems) {
+          resolve({ favSongsId: []});
+        } else {
+          const favSongsId = getfavSongs[0].favoriteItems.favoriteSongIds || [];
+          resolve(favSongsId);
+        }
+      } catch (error) {
+        reject(error);
       }
-    })
+    });
   },
   removefavoriteSong: (userId, songId) => {
     return new Promise(async (resolve, reject) => {
@@ -88,10 +110,41 @@ module.exports = {
   },
   getAllFavoriteSongs: (userId) => {
     return new Promise(async (resolve, reject) => {
-      const getfavSongs = await usersDB.findOne({ _id: userId }).lean().exec();
-      const favSongsId = getfavSongs.favoriteItems.favoriteSongIds
-      const favoriteSong = await songdataDB.find({ _id: { $in: favSongsId } }).lean().exec();
-      resolve(favoriteSong, { msg: "success" });
+      try {
+        const getfavSongs = await usersDB.aggregate([
+          {
+            $match: {
+              _id: new ObjectId(userId)
+            }
+          },
+          {
+            $project: {
+              _id: null,
+              favoriteItems: "$favoriteItems.favoriteSongIds"
+            }
+          }
+        ]);
+
+        if (getfavSongs.length === 0 || !getfavSongs[0].favoriteItems) {
+          resolve({ favSongsId: [] });
+        } else {
+          const favSongsId = getfavSongs[0].favoriteItems || [];
+
+          // Use the $lookup stage to fetch song data for the favorite song IDs
+          const songData = await songdataDB.aggregate([
+            {
+              $match: {
+                _id: { $in: favSongsId.map(id => new ObjectId(id)) }
+              }
+            }
+          ]);
+          resolve(songData);
+        }
+      } catch (error) {
+        reject(error);
+      }
+
+  
     })
   },
   getMalayalamSongs: () => {

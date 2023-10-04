@@ -1,11 +1,18 @@
 <div class="fav-song-main">
+    {{#if favSongs.length}}
     {{#each favSongs}}
     <div class="mycard mt-4" onclick="getsongDetails('{{_id}}','{{songName}}','{{songimgName}}','{{songfileName}}')">
         <img src="/uploads/songImage/{{songimgName}}" alt="favSong">
         <h6 class="mt-2 ">{{songName}}</h6>
     </div>
     {{/each}}
+    {{else}}
+            <div class="text-center">
+                <p>No fav song</p>
+            </div>
+    {{/if}}
 </div>
+
 <style>
     * {
         margin: 0;
