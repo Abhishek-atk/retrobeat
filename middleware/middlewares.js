@@ -28,7 +28,8 @@ module.exports = {
   verifyloggedIn: (req, res, next) => {
     jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
-        res.redirect("/login");
+        console.log("TestOK")
+        res.render("users/login");
       } else {
         next();
       }
