@@ -448,20 +448,20 @@
                     onchange="handleCheckboxChange(this)" id="check-box"/> <span class="playlistName">{{playlistName}}</span>
                 <br />
                 {{/each}}
-                <button type="submit" id="submitButton" disabled style="border-radius: 8px;">Save</button>
+                <button type="submit" class="playlistCreateBtn" id="submitButton" disabled style="border-radius: 8px;">Save</button>
             </form>
         </div>
         <div class="playlist_createPlaylist">
             <div id="createplaylistdivBtn">
             <i class="fa-solid fa-book-medical"></i>
-            <span>create new playlist</span>
+            <span class="playlisthead">create new playlist</span>
             </div>
         </div>
 
         <div id="createplaylistForm">
             <form>
                 <input type="text" name="playlistname" id="plnameinp" placeholder="Enter playlist Name" required>
-                <button type="submit" id="createplBtn">Create</button>
+                <button type="submit" class="playlistCreateBtn" id="createplBtn">Create</button>
             </form>
         </div>
 

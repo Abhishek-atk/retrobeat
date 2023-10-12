@@ -619,7 +619,7 @@ input:-webkit-autofill:active {
 .slide-four {
   height: 90%;
   margin: auto 10px;
-  background-color: #a847a4;
+  background-color: #ffff;
   border-radius: 8px;
   place-items: center;
   transition: all 0.5s;
@@ -934,73 +934,79 @@ input:-webkit-autofill:active {
   font-weight: bold;
 }
 
- /* Styling for the header */
- .playlist_header {
-   display: flex;
-   justify-content: space-between;
-   margin-bottom: 20px;
- }
- .playlist_header h4{
-  background: transparent !important;
- }
-
- .playlistName{
-font-size: 20px;
+/* Styling for the header */
+.playlist_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
- .playlist_header h6 {
-   font-size: 16px;
-   font-weight: bold;
-   color: #333;
- }
 
- #close-icon {
-   cursor: pointer;
- }
+.playlist_header h4 {
+  background: transparent !important;
+}
 
- #createplaylistForm{
-  display: none;
- }
- #createplaylistdivBtn{
+.playlistName {
+  font-size: 20px;
+}
+
+.playlist_header h6 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+#close-icon {
   cursor: pointer;
- }
+}
 
-#plnameinp{
+#createplaylistForm {
+  display: none;
+}
+
+#createplaylistdivBtn {
+  cursor: pointer;
+}
+
+#plnameinp {
   font-size: 15px;
 }
- /* Styling for the list */
- .playlist_list label {
-   display: block;
-   margin-bottom: 5px;
- }
 
- .playlist_list input[type="checkbox"] {
-   margin-right: 5px;
- }
+/* Styling for the list */
+.playlist_list label {
+  display: block;
+  margin-bottom: 5px;
+}
 
-#submitButton{
-  padding: 6px;
-  font-size: 20px;
+.playlist_list input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+#submitButton {
+  padding: 4px;
+  font-size: small;
   background-color: transparent !important;
-  
-}
-.playlist_createPlaylist span{
-  font-size: 22px;
+
 }
 
-.playlist_createPlaylist a{
+.playlist_createPlaylist span {
+  font-size: 18px;
+}
+
+.playlist_createPlaylist a {
   background: transparent !important;
   color: black;
 }
- /* Styling for the create new playlist section */
- .playlist_createPlaylist {
-   display: flex;
-   align-items: center;
-   margin-top: 10px;
- }
 
- .playlist_createPlaylist i {
-   margin-right: 5px;
- }
+/* Styling for the create new playlist section */
+.playlist_createPlaylist {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.playlist_createPlaylist i {
+  margin-right: 5px;
+}
 
 #overlay-background {
   position: fixed;
@@ -1115,6 +1121,12 @@ font-size: 20px;
   background: black;
   border-radius: inherit;
   transition: 0.3s;
+}
+
+.playlistCreateBtn {
+  padding: 4px;
+  font-size: small;
+  border-radius: 6px;
 }
 
 /* track player end */
