@@ -1,10 +1,10 @@
-## Live
-Video Link🔗: https://www.linkedin.com/feed/update/urn:li:activity:7118531657283895296/
-
 # RetroBeat | Music Web App | Node.js
 
 ## Description
 RetroBeat is a music web app developed using Node.js, Express.js, and MongoDB. It boasts a visually appealing interface and exceptional functionality. Key features include a robust sign-up and login system, personalized playlists, favorites, and an efficient music library management system.
+
+## Live
+Video Link🔗: https://www.linkedin.com/feed/update/urn:li:activity:7118531657283895296/
 
 ## Features
 - **User Authentication:**
